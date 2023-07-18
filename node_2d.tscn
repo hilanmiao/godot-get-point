@@ -1,10 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2sbyoknqlax6"]
+[gd_scene load_steps=6 format=3 uid="uid://d2sbyoknqlax6"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_us28c"]
 [ext_resource type="Theme" uid="uid://cw0pjns4rx0om" path="res://new_theme.tres" id="2_nu067"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s45ia"]
-load_path = "res://.godot/imported/shot.png-9d5126deb1fd9135cad1590f1d212cb3.ctex"
+[ext_resource type="Texture2D" uid="uid://bvlvpq8yyq8a1" path="res://shot.png" id="2_yvxgf"]
+[ext_resource type="Script" path="res://LineEditWidth.gd" id="4_tx261"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikhy1"]
 bg_color = Color(0.882353, 0.470588, 0.294118, 1)
@@ -13,16 +12,19 @@ bg_color = Color(0.882353, 0.470588, 0.294118, 1)
 script = ExtResource("1_us28c")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-texture = SubResource("CompressedTexture2D_s45ia")
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_yvxgf")
 expand_mode = 1
 
 [node name="CanvasLayerHUD" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayerHUD"]
-offset_left = 2088.0
-offset_top = 56.0
-offset_right = 2362.0
-offset_bottom = 207.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 314.0
+offset_bottom = 191.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayerHUD/VBoxContainer"]
 layout_mode = 2
@@ -34,7 +36,9 @@ text = "宽度："
 
 [node name="LineEditWidth" type="LineEdit" parent="CanvasLayerHUD/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("2_nu067")
+script = ExtResource("4_tx261")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayerHUD/VBoxContainer"]
 layout_mode = 2
@@ -49,35 +53,35 @@ layout_mode = 2
 theme = ExtResource("2_nu067")
 
 [node name="ButtonSetting" type="Button" parent="CanvasLayerHUD"]
-offset_left = 2088.0
-offset_top = 200.0
-offset_right = 2360.0
-offset_bottom = 243.0
+offset_left = 40.0
+offset_top = 184.0
+offset_right = 312.0
+offset_bottom = 227.0
 theme_override_colors/icon_disabled_color = Color(0.960784, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ikhy1")
 text = "设置"
 
 [node name="ButtonFile" type="Button" parent="CanvasLayerHUD"]
-offset_left = 2088.0
-offset_top = 272.0
-offset_right = 2360.0
-offset_bottom = 315.0
+offset_left = 40.0
+offset_top = 256.0
+offset_right = 312.0
+offset_bottom = 299.0
 theme_override_colors/icon_disabled_color = Color(0.960784, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ikhy1")
 text = "选择图片"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayerHUD"]
-offset_left = 2088.0
-offset_top = 416.0
-offset_right = 2362.0
-offset_bottom = 476.0
+offset_left = 40.0
+offset_top = 400.0
+offset_right = 314.0
+offset_bottom = 460.0
 
 [node name="LabelPoint" type="Label" parent="CanvasLayerHUD/HBoxContainer3"]
 layout_mode = 2
 theme = ExtResource("2_nu067")
-text = "坐标："
+text = "point:"
 
 [node name="LineEditPoint" type="LineEdit" parent="CanvasLayerHUD/HBoxContainer3"]
 layout_mode = 2
@@ -86,10 +90,10 @@ theme = ExtResource("2_nu067")
 theme_override_font_sizes/font_size = 30
 
 [node name="FileDialog" type="FileDialog" parent="."]
-title = "选择一张图片"
+title = "Open a File"
 initial_position = 1
 size = Vector2i(600, 400)
-visible = true
+ok_button_text = "打开"
 file_mode = 0
 access = 2
 filters = PackedStringArray("*.png", "*.jpeg", "*.jpg")
