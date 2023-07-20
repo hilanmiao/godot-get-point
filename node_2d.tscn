@@ -12,8 +12,8 @@ bg_color = Color(0.882353, 0.470588, 0.294118, 1)
 script = ExtResource("1_us28c")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 2400.0
+offset_bottom = 800.0
 texture = ExtResource("2_yvxgf")
 expand_mode = 1
 
@@ -21,6 +21,7 @@ expand_mode = 1
 layer = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayerHUD"]
+visible = false
 offset_left = 40.0
 offset_top = 40.0
 offset_right = 314.0
@@ -53,6 +54,7 @@ layout_mode = 2
 theme = ExtResource("2_nu067")
 
 [node name="ButtonSetting" type="Button" parent="CanvasLayerHUD"]
+visible = false
 offset_left = 40.0
 offset_top = 184.0
 offset_right = 312.0
@@ -63,6 +65,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ikhy1")
 text = "设置"
 
 [node name="ButtonFile" type="Button" parent="CanvasLayerHUD"]
+visible = false
 offset_left = 40.0
 offset_top = 256.0
 offset_right = 312.0

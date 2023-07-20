@@ -100,8 +100,10 @@ func onDrawPoint(event):
 	var sprite = Sprite2D.new()
 	var icon = preload("res://location.png")
 	sprite.set_texture(icon)
-	sprite.scale = Vector2(0.3, 0.3)
+	sprite.scale = Vector2(0.5, 0.5)
 	sprite.position = event.position
+	print(sprite.get_rect())
+	sprite.offset = Vector2(0, -64)
 	add_child(sprite)
 	
 	# 粘贴板
