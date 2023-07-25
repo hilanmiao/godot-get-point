@@ -102,7 +102,6 @@ func onDrawPoint(event):
 	sprite.set_texture(icon)
 	sprite.scale = Vector2(0.5, 0.5)
 	sprite.position = event.position
-	print(sprite.get_rect())
 	sprite.offset = Vector2(0, -64)
 	add_child(sprite)
 	
@@ -131,9 +130,29 @@ func onButtonFilePressed():
 func onFileSelected(path): 
 	print(path)
 
+	# 设置大小
 #	texture_rect.custom_minimum_size =  Vector2(10, 10)
 	texture_rect.size = Vector2(container_width, container_height)
-	texture_rect.texture = load(path)
+	
+	# 读取文件
+	var file = FileAccess.open(path, FileAccess.READ)
+	var buffer = file.get_buffer(file.get_length())
+	file.close()
+	
+	# 转换为 Image
+	var image = Image.new()
+	var extension = path.get_extension()
+	var error
+	if extension == 'png':
+		error = image.load_png_from_buffer(buffer)
+	else:
+		error = image.load_jpg_from_buffer(buffer)	
+	if error != OK:
+		push_error("Couldn't load the image.")
+
+	# 转换为ImageTexture
+	var texture = ImageTexture.create_from_image(image)
+	texture_rect.texture = texture
 
 
 	
