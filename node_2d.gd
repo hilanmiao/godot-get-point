@@ -130,10 +130,6 @@ func onButtonFilePressed():
 func onFileSelected(path): 
 	print(path)
 
-	# 设置大小
-#	texture_rect.custom_minimum_size =  Vector2(10, 10)
-	texture_rect.size = Vector2(container_width, container_height)
-	
 	# 读取文件
 	var file = FileAccess.open(path, FileAccess.READ)
 	var buffer = file.get_buffer(file.get_length())
@@ -153,6 +149,11 @@ func onFileSelected(path):
 	# 转换为ImageTexture
 	var texture = ImageTexture.create_from_image(image)
 	texture_rect.texture = texture
+	
+	# 设置大小
+#	texture_rect.custom_minimum_size =  Vector2(10, 10)
+	texture_rect.size = Vector2(int(line_edit_width.text), int(line_edit_height.text))
+	
 
 
 	
